@@ -5,3 +5,7 @@ build/
 tmp/
 temp/
 dist/
+.env
+.env-example
+.env-docker-dev
+ormconfig.json
