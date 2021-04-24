@@ -1,8 +1,8 @@
-import express from 'express';
 import dotenv from 'dotenv';
-import { json } from 'body-parser';
-import Routes from './routes';
 import './database';
+import { http } from './http';
+import './websocket/client';
+import './websocket/admin';
 
 export default class Server {
   #port: any;
@@ -12,11 +12,7 @@ export default class Server {
   }
 
   start() {
-    const server = express();
-    const routes = new Routes().getRoutes();
-    server.use(json());
-    server.use(routes);
-    server.listen(this.#port, () =>
+    http.listen(this.#port, () =>
       console.log(`Server running on port ${this.#port}`),
     );
   }
