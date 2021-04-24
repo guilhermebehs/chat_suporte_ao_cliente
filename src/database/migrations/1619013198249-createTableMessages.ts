@@ -14,8 +14,8 @@ export class createTableMessages1619013198249 implements MigrationInterface {
             generationStrategy: 'uuid',
           },
           {
-            name: 'admin_uuid',
-            type: 'uuid',
+            name: 'admin_id',
+            type: 'varchar',
             isNullable: true,
           },
           {
