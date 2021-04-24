@@ -14,7 +14,7 @@ export default class MessageEntity {
   uuid?: string;
   @Column()
   text: string;
-  @Column({ name: 'admin_uuid' })
+  @Column({ name: 'admin_id' })
   adminId: string;
   @Column({ name: 'user_uuid' })
   userId: string;
