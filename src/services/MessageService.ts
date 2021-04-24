@@ -14,7 +14,7 @@ export default class MessageService {
   constructor() {
     this.#messageRepository = getCustomRepository(MessageRepository);
   }
-  async create({ adminId, text, userId }: IMessageCreate) {
+  async create({ adminId, text = '', userId }: IMessageCreate) {
     if (!userId || !text)
       throw new BadRequestException('One or more required fields are empty!');
 

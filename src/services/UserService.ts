@@ -29,4 +29,13 @@ export default class UserService {
       throw new InternalErrorException();
     }
   }
+
+  async findByEmail(email: string) {
+    try {
+      const user = await this.#userRepository.findOne({ email });
+      return user;
+    } catch (e) {
+      throw new InternalErrorException();
+    }
+  }
 }

@@ -8,6 +8,11 @@ interface ISettingCreate {
   username: string;
   chat: boolean;
 }
+
+interface ISettingUpdate {
+  username?: string;
+  chat?: boolean;
+}
 export default class SettingService {
   #settingRepository: SettingRepository;
 
@@ -35,6 +40,27 @@ export default class SettingService {
     } catch (e) {
       if (e instanceof BadRequestException)
         throw new BadRequestException(e.message);
+      throw new InternalErrorException();
+    }
+  }
+
+  async findByUsername(username: string) {
+    try {
+      const settings = await this.#settingRepository.findOne({ username });
+      return settings;
+    } catch (e) {
+      throw new InternalErrorException();
+    }
+  }
+
+  async update({ chat, username }: ISettingUpdate) {
+    try {
+      const settings = await this.#settingRepository.update(
+        { username },
+        { chat },
+      );
+      return settings;
+    } catch (e) {
       throw new InternalErrorException();
     }
   }
