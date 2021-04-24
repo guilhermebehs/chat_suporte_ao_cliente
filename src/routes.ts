@@ -14,6 +14,8 @@ export default class Routes {
     const userController = new UserController();
     const messageController = new MessageController();
     this.#routes.post('/settings', settingController.create);
+    this.#routes.get('/settings/:username', settingController.findByUsername);
+    this.#routes.put('/settings/:username', settingController.update);
     this.#routes.post('/users', userController.create);
     this.#routes.post('/messages', messageController.create);
     this.#routes.get('/messages/:idUsuario', messageController.showByUser);
